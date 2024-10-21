@@ -4,7 +4,7 @@ from custom_tools.agent_tools import search_tool
 from langchain import hub
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_openai_tools_agent
-from custom_tools.agent_tools import output_tool, search_tool
+from custom_tools.agent_tools import search_tool
 
 import os
 from dotenv import load_dotenv
@@ -23,7 +23,7 @@ def run_query_agent(state: list):
     search_tool.description = search_tool.description.format(topic=state['topic'])
     query_agent_runnable = create_openai_tools_agent(
         llm=llm,
-        tools=[search_tool, output_tool],
+        tools=[search_tool],
         prompt=prompt
     )
     agent_out = query_agent_runnable.invoke(state)  # Using query_agent_runnable here

@@ -30,15 +30,9 @@ embeddings = OpenAIEmbeddings()
 docsearch = FAISS.from_texts(texts, embeddings)
 
 
-# Define search tool for querying the happiness index
+# Define search tool for querying similar records
 @tool('search')
 def search_tool(query: str):
     '''This tool only gives details about {topic}.
     Call this tool only when asked about {topic}.'''
     return docsearch.similarity_search(query)
-
-# Define final answer tool
-@tool('final_output')
-def output_tool(answer: str):
-    '''Returns a natural language response to the user in `answer`.'''
-    return answer

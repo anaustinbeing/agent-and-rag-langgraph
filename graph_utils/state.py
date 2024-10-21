@@ -1,12 +1,10 @@
-from custom_tools.agent_tools import output_tool
+# from custom_tools.agent_tools import output_tool
 import os
 from dotenv import load_dotenv
 from graph_utils.query_runner import llm
 
 load_dotenv()
 
-
-final_answer_llm = llm.bind_tools([output_tool], tool_choice='final_output')
 
 def rag_final_answer(state: list):
     print('> final_answer')
@@ -18,9 +16,8 @@ def rag_final_answer(state: list):
     QUESTION: {query}
     ANSWER: {context['search']}
     '''
-    out = final_answer_llm.invoke(prompt)
-    function_call = out.additional_kwargs['tool_calls'][-1]['function']['arguments']
-    return {'agent_out': function_call}
+    out = llm.invoke(prompt)
+    return {'agent_out': out.content}
 
 def handle_error(state: list):
     print('> handle_error')
@@ -29,6 +26,5 @@ def handle_error(state: list):
     Politely reply that you do not have information outside the topic: {state['topic']}.
     QUESTION: {query}
     '''
-    out = final_answer_llm.invoke(prompt)
-    function_call = out.additional_kwargs['tool_calls'][-1]['function']['arguments']
-    return {'agent_out': function_call}
+    out = llm.invoke(prompt)
+    return {'agent_out': out.content}

@@ -33,8 +33,7 @@ def build_graph():
         condition=router_one,
         conditional_edge_mapping={
             'search': 'search',
-            'error': 'error',
-            'final_output': END
+            'error': 'error'
         }
     )
 

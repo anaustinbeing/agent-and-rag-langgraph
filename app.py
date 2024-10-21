@@ -28,4 +28,4 @@ while True:
         'chat_history': []
     })
         
-    print(json.loads(out['agent_out'])['answer'])
+    print(out['agent_out'])
