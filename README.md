@@ -21,4 +21,5 @@ rag_final_answer - the output of search node is fed to LLM to form reponse for u
 END node
 
 
-![image](https://github.com/user-attachments/assets/641cd11d-4bb4-4178-acac-bfa3c84a8132)
+![image](https://github.com/user-attachments/assets/3bbc95f6-45b2-4ed2-97e2-2979cdd33558)
+
