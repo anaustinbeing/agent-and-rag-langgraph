@@ -10,11 +10,11 @@ The following is the working:
 
 ## Nodes
 
-query_agent (START node) - An agent which returns `ToolAgentAction` specifying the function calls. This information will be used to decide whether we move to the search or END node.
+tool_out (START node) - This node performs tool calling and identifies the tool (function) that needs to be called and the arguments based on the user query. This information will be used to decide whether we move to the search or error node.
 
 search - Performs similarity search and returns the matching documents.
 
-error - If there is no match found by the start node.
+error - If there is no tool calling identified by the start node, error node will run.
 
 rag_final_answer - the output of search node is fed to LLM to form reponse for user.
 
