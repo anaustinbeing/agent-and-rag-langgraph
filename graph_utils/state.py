@@ -17,7 +17,7 @@ def rag_final_answer(state: list):
     ANSWER: {context['search']}
     '''
     out = llm.invoke(prompt)
-    return {'agent_out': out.content}
+    return {'query_tool_out': out.content}
 
 def handle_error(state: list):
     print('> handle_error')
@@ -27,4 +27,4 @@ def handle_error(state: list):
     QUESTION: {query}
     '''
     out = llm.invoke(prompt)
-    return {'agent_out': out.content}
+    return {'query_tool_out': out.content}

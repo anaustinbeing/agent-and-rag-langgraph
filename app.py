@@ -13,8 +13,6 @@ os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
 runnable = build_graph()
 
-print('Type your questions about World Happiness Index.')
-
 topic = input('Enter the topic of the PDF: ')
 
 while True:
@@ -28,4 +26,4 @@ while True:
         'chat_history': []
     })
         
-    print(out['agent_out'])
+    print(out['query_tool_out'])

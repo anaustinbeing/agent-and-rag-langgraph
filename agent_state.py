@@ -21,5 +21,5 @@ import operator
 class AgentState(TypedDict):
     topic: str
     input: str
-    agent_out: Union[AgentAction, AgentFinish, None]
+    query_tool_out: Union[AgentAction, AgentFinish, None]
     intermediate_steps: Annotated[list[tuple[AgentAction, str]], operator.add]
